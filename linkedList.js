@@ -102,6 +102,23 @@ class LinkedList {
 
         return undefined;
     }
+
+    contains(value) {
+        if(this.head === null) return false;
+
+        let temp = this.head;
+
+        for(let i = 0; i < this.size; i++) {
+
+            if(temp.data === value) {
+                return true;
+            }
+
+            temp = temp.next;
+        }
+
+        return false;
+    }
 }
 
 const linkedList = new LinkedList();
@@ -111,23 +128,20 @@ linkedList.append(1);
 linkedList.append(2);
 linkedList.prepend(4);
 
-console.log(linkedList.toString());
+console.log(`toString; ${linkedList.toString()}`);
 
-console.log(linkedList.size);
+console.log(`size: ${linkedList.size}`);
 
-console.log(linkedList.head);
+console.log(`head: ${JSON.stringify(linkedList.head)}`);
 
-console.log(linkedList.tail);
+console.log(`tail: ${JSON.stringify(linkedList.tail)}`);
 
-console.log(linkedList.at(2));
-console.log(linkedList.at(0));
-console.log(linkedList.at(5));
+console.log(`at(2): ${JSON.stringify(linkedList.at(2))}`);
+console.log(`at(0): ${JSON.stringify(linkedList.at(0))}`);
+console.log(`at(5): ${linkedList.at(5)}`);
 
-console.log(linkedList.pop());
-console.log(linkedList.toString());
-console.log(linkedList.pop());
-console.log(linkedList.toString());
-console.log(linkedList.pop());
-console.log(linkedList.toString());
-console.log(linkedList.pop());
-console.log(linkedList.toString());
+console.log(`pop: ${JSON.stringify(linkedList.pop())}`);
+console.log(`toString: ${linkedList.toString()}`);
+
+console.log(`contains(3): ${linkedList.contains(3)}`);
+console.log(`contains(5): ${linkedList.contains(5)}`);
