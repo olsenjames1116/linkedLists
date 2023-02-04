@@ -5,6 +5,10 @@ class LinkedList {
         this.listHead = new Node();
     }
 
+    get head() {
+        return this.listHead.next;
+    }
+
     append(value) {
         const node = new Node(value);
         if(this.listHead.next === null) {
@@ -56,9 +60,14 @@ class LinkedList {
 }
 
 const linkedList = new LinkedList();
+
 linkedList.prepend(3);
 linkedList.append(1);
 linkedList.append(2);
 linkedList.prepend(4);
-console.log(linkedList.size);
+
 console.log(linkedList.toString());
+
+console.log(linkedList.size);
+
+console.log(linkedList.head);
