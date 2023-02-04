@@ -80,6 +80,28 @@ class LinkedList {
 
         return temp;
     }
+
+    pop() {
+        if(this.size === 1) {
+            const removedNode = this.head;
+            this.listHead.next = null;
+            return removedNode;
+        }
+
+        if(this.head !== null) {
+            let temp = this.head;
+
+            while(temp.next.next !== null) {
+                temp = temp.next;
+            }
+
+            const removedNode = temp.next;
+            temp.next = null;
+            return removedNode;
+        }
+
+        return undefined;
+    }
 }
 
 const linkedList = new LinkedList();
@@ -100,3 +122,12 @@ console.log(linkedList.tail);
 console.log(linkedList.at(2));
 console.log(linkedList.at(0));
 console.log(linkedList.at(5));
+
+console.log(linkedList.pop());
+console.log(linkedList.toString());
+console.log(linkedList.pop());
+console.log(linkedList.toString());
+console.log(linkedList.pop());
+console.log(linkedList.toString());
+console.log(linkedList.pop());
+console.log(linkedList.toString());
