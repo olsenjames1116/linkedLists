@@ -70,7 +70,7 @@ class LinkedList {
     }
 
     at(index) {
-        if (index > this.size || index < 0) return undefined;
+        if (index >= this.size || index < 0) return undefined;
 
         let temp = this.listHead.next;
 
@@ -136,7 +136,7 @@ class LinkedList {
     }
 
     insertAt(value, index) {
-        if(index > this.size || index < 0) return undefined;
+        if(index >= this.size || index < 0) return undefined;
 
         if(index === 0) {
             this.prepend(value);
@@ -153,12 +153,30 @@ class LinkedList {
 
         previousNode.next = new Node(value, temp);
     }
+
+    removeAt(index) {
+        if(index >= this.size || index < 0) return undefined;
+
+        if(index === 0) {
+            this.listHead.next = this.head.next;
+        }
+
+        let temp = this.head;
+        let previousNode;
+
+        for(let i = 0; i < index; i++) {
+            previousNode = temp;
+            temp = temp.next;
+        }
+
+        previousNode.next = temp.next;
+    }
 }
 
 const linkedList = new LinkedList();
 
-linkedList.prepend(3);
 linkedList.append(1);
+linkedList.prepend(3);
 linkedList.append(2);
 linkedList.prepend(4);
 
@@ -184,4 +202,7 @@ console.log(`find(1): ${linkedList.find(1)}`);
 console.log(`find(5): ${linkedList.find(5)}`);
 
 linkedList.insertAt('inserted', 1);
+console.log(linkedList.toString());
+
+linkedList.removeAt(1);
 console.log(linkedList.toString());
