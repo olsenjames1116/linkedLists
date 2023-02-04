@@ -1,28 +1,37 @@
+import Node from './node.js';
+
 class LinkedList {
-    constructor(list) {
-        this.list = list;
+    constructor() {
+        this.listHead = new Node(null, null);
     }
 
-    append(node) {
-        this.list.push(node);
+    append(value) {
+        const node = new Node(value);
+        if(this.listHead.next === null) {
+            this.listHead.next = node;
+        } else {
+            let temp = this.listHead.next;
+            while(temp.next !== null) {
+                temp = temp.next;
+            }
+            temp.next = node;
+        }
     }
 
-    prepend(node) {
-        this.list.unshift(node);
-    }
+    toString() {
+        let temp = this.listHead.next;
+        let string = ``;
 
-    get size() {
-        return this.list.length;
-    }
+        while(temp !== null) {
+            string += `( ${temp.data} ) -> `;
+            temp = temp.next;
+        }
 
-    get head() {
-        return this.list[0];
-    }
-
-    get tail() {
-        return this.list[this.size - 1];
+        return string += `null`;
     }
 }
 
-const linkedList = new LinkedList([1, 2, 3, 4]);
-console.log(linkedList.tail);
+const linkedList = new LinkedList();
+linkedList.append(1);
+linkedList.append(2);
+console.log(linkedList.toString());
