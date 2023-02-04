@@ -68,6 +68,18 @@ class LinkedList {
 
         return string += `null`;
     }
+
+    at(index) {
+        if (index > this.size || index < 0) return undefined;
+
+        let temp = this.listHead.next;
+
+        for(let i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+
+        return temp;
+    }
 }
 
 const linkedList = new LinkedList();
@@ -84,3 +96,7 @@ console.log(linkedList.size);
 console.log(linkedList.head);
 
 console.log(linkedList.tail);
+
+console.log(linkedList.at(2));
+console.log(linkedList.at(0));
+console.log(linkedList.at(5));
