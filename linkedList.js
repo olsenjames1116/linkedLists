@@ -18,4 +18,11 @@ class LinkedList {
     get head() {
         return this.list[0];
     }
+
+    get tail() {
+        return this.list[this.size - 1];
+    }
 }
+
+const linkedList = new LinkedList([1, 2, 3, 4]);
+console.log(linkedList.tail);
