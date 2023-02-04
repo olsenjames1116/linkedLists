@@ -15,7 +15,7 @@ class LinkedList {
             while(temp.next !== null) {
                 temp = temp.next;
             }
-            
+
             temp.next = node;
         }
     }
@@ -27,6 +27,19 @@ class LinkedList {
             const firstNode = this.listHead.next;
             this.listHead.next = new Node(value, firstNode);
         }
+    }
+
+    get size() {
+        if(this.listHead.next === null ) return 0;
+
+        let temp = this.listHead.next;
+        let length;
+
+        for(length = 1; temp.next !== null; length++) {
+            temp = temp.next;
+        }
+
+        return length;
     }
 
     toString() {
@@ -47,4 +60,5 @@ linkedList.prepend(3);
 linkedList.append(1);
 linkedList.append(2);
 linkedList.prepend(4);
+console.log(linkedList.size);
 console.log(linkedList.toString());
