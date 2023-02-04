@@ -119,6 +119,21 @@ class LinkedList {
 
         return false;
     }
+
+    find(value) {
+        if(!this.contains(value)) return null;
+
+        let temp = this.head;
+
+        for(let index = 0; index < this.size; index++) {
+
+            if(temp.data === value) {
+                return index;
+            }
+
+            temp = temp.next;
+        }
+    }
 }
 
 const linkedList = new LinkedList();
@@ -145,3 +160,6 @@ console.log(`toString: ${linkedList.toString()}`);
 
 console.log(`contains(3): ${linkedList.contains(3)}`);
 console.log(`contains(5): ${linkedList.contains(5)}`);
+
+console.log(`find(1): ${linkedList.find(1)}`);
+console.log(`find(5): ${linkedList.find(5)}`);
