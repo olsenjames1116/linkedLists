@@ -134,6 +134,25 @@ class LinkedList {
             temp = temp.next;
         }
     }
+
+    insertAt(value, index) {
+        if(index > this.size || index < 0) return undefined;
+
+        if(index === 0) {
+            this.prepend(value);
+            return;
+        }
+
+        let temp = this.head;
+        let previousNode;
+
+        for(let i = 0; i < index; i++) {
+            previousNode = temp;
+            temp = temp.next;
+        }
+
+        previousNode.next = new Node(value, temp);
+    }
 }
 
 const linkedList = new LinkedList();
@@ -163,3 +182,6 @@ console.log(`contains(5): ${linkedList.contains(5)}`);
 
 console.log(`find(1): ${linkedList.find(1)}`);
 console.log(`find(5): ${linkedList.find(5)}`);
+
+linkedList.insertAt('inserted', 1);
+console.log(linkedList.toString());
