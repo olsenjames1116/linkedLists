@@ -10,4 +10,8 @@ class LinkedList {
     prepend(node) {
         this.list.unshift(node);
     }
+
+    getSize() {
+        return this.list.length;
+    }
 }
