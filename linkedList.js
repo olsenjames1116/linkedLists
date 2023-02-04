@@ -11,7 +11,11 @@ class LinkedList {
         this.list.unshift(node);
     }
 
-    getSize() {
+    get size() {
         return this.list.length;
+    }
+
+    get head() {
+        return this.list[0];
     }
 }
